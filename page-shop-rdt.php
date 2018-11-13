@@ -80,7 +80,7 @@
     'post_title' => $op_fi_id_esc,
     'post_status' => $item_status,
     'post_content' => $new_content,
-    'post_type' => 'post'
+    'post_type' => 'orders'
   );
   $post_id = wp_insert_post( $post, true );
 
@@ -90,6 +90,10 @@
   add_post_meta($post_id, 'op_meta_address', $op_fi_address_esc, true);
   add_post_meta($post_id, 'op_meta_email', $op_fi_email_esc, true);
   add_post_meta($post_id, 'op_meta_note', $op_fi_note_esc, true);
+  if($op_fi_method_esc != 'mt1'){ $op_fi_method_esc_meta = 'Chuyển khoản'; }else{ $op_fi_method_esc_meta = 'Nhận hàng'; }
+  add_post_meta($post_id, 'op_meta_method', $op_fi_method_esc_meta, true);
+  $op_fi_total_esc_meta = str_replace(array('&lt;', 'sup', '&gt;', '/'), '', $op_fi_total_esc);
+  add_post_meta($post_id, 'op_meta_total', $op_fi_total_esc_meta, true);
 
   $item_category_txt = 'Đơn hàng';
   $item_category = term_exists( $item_category_txt, 'category' );

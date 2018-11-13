@@ -291,6 +291,7 @@ body {
   display: none;
 }
 .single .site-main > .post,
+.single .site-main > .orders,
 .page .entry-content,
 .search .entry-content,
 .error404 .entry-content {
@@ -320,7 +321,8 @@ body {
   margin: auto;
   opacity: .7;
 }
-.single .site-main > .post .entry-title {
+.single .site-main > .post .entry-title,
+.single .site-main > .orders .entry-title {
   font-size: 30px;
   line-height: normal;
   padding-bottom: 15px;
@@ -340,6 +342,7 @@ body {
   margin: 10px 0;
 }
 .post .entry-content h3,
+.orders .entry-content h3,
 .page .entry-content h3,
 .search .entry-content h3,
 .error404 .entry-content h3 {

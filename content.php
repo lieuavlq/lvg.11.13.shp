@@ -6,6 +6,7 @@
 	$op_relate = get_post_meta(get_the_ID(), 'op_relate', true);
 	$post_category = get_the_category( get_the_ID() );
 	$op_status = get_post_meta(get_the_ID(), 'op_status', true);
+	$op_status_current = get_post_meta(get_the_ID(), 'op_status_current', true);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -83,7 +84,7 @@
 	<div class="entry-content">
 		<?php if($post_category[0]->slug == 'don-hang'): ?>
 			<h3>ĐƠN HÀNG TỚI ĐÂU RÙI</h3>
-			<p>Tình trạng: <span class="op-status-clr"><?php echo $op_status; ?></span></p>
+			<p>Tình trạng: <span class="op-status-clr"><?php if(!empty($op_status_current)){ echo $op_status_current; }else{ echo $op_status; } ?></span></p>
 		<?php endif; ?>
 
 		<?php
