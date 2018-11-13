@@ -1,0 +1,1 @@
+!function(n){n(document).on("keydown.lvgames_shop",function(a){var t=!1;37===a.which?t=n(".nav-previous a").attr("href"):39===a.which&&(t=n(".nav-next a").attr("href")),t&&!n("textarea, input").is(":focus")&&(window.location=t)})}(jQuery);
