@@ -556,82 +556,22 @@ function pagination($pages = '', $range = 1){
 
 // Our custom post type function
 function create_posttype() {
- 
-    register_post_type( 'orders',
-    // CPT Options
-        array(
-            'labels' => array(
-                'name' => __( 'Đơn Hàng' ),
-                'singular_name' => __( 'Order' )
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'rewrite' => array('slug' => 'order'),
-        )
-    );
+  register_post_type( 'orders',
+  // CPT Options
+    array(
+        'labels' => array(
+            'name' => __( 'Đơn hàng' ),
+            'singular_name' => __( 'Đơn hàng' )
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'order'),
+        'menu_position' => 3,
+        'supports' => array( 'title', 'editor', 'author', 'revisions', 'custom-fields' ),
+        'taxonomies' => array( 'post_tag','category' ),
+        'menu_icon' => 'http://wpshop.localhost/wp-content/uploads/2018/11/shopping-basket-button-1-1.png',
+    )
+  );
 }
 // Hooking up our function to theme setup
 add_action( 'init', 'create_posttype' );
-
-/*
-* Creating a function to create our CPT
-*/
- 
-function custom_post_type() {
- 
-// Set UI labels for Custom Post Type
-    $labels = array(
-        'name'                => _x( 'Quản lý Đơn Hàng', 'Post Type General Name', 'lvgames_shop' ),
-        'singular_name'       => _x( 'Order', 'Post Type Singular Name', 'lvgames_shop' ),
-        'menu_name'           => __( 'Orders', 'lvgames_shop' ),
-        'parent_item_colon'   => __( 'Parent Order', 'lvgames_shop' ),
-        'all_items'           => __( 'All Orders', 'lvgames_shop' ),
-        'view_item'           => __( 'View Order', 'lvgames_shop' ),
-        'add_new_item'        => __( 'Add New Order', 'lvgames_shop' ),
-        'add_new'             => __( 'Add New', 'lvgames_shop' ),
-        'edit_item'           => __( 'Edit Order', 'lvgames_shop' ),
-        'update_item'         => __( 'Update Order', 'lvgames_shop' ),
-        'search_items'        => __( 'Search Order', 'lvgames_shop' ),
-        'not_found'           => __( 'Not Found', 'lvgames_shop' ),
-        'not_found_in_trash'  => __( 'Not found in Trash', 'lvgames_shop' ),
-    );
-     
-// Set other options for Custom Post Type
-     
-    $args = array(
-        'label'               => __( 'orders', 'lvgames_shop' ),
-        'description'         => __( 'Managerment orders.', 'lvgames_shop' ),
-        'labels'              => $labels,
-        // Features this CPT supports in Post Editor
-        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-        // You can associate this CPT with a taxonomy or custom taxonomy. 
-        'taxonomies'          => array( 'group' ),
-        /* A hierarchical CPT is like Pages and can have
-        * Parent and child items. A non-hierarchical CPT
-        * is like Posts.
-        */ 
-        'hierarchical'        => false,
-        'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
-        'show_in_admin_bar'   => true,
-        'menu_position'       => 2,
-        'can_export'          => true,
-        'has_archive'         => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'capability_type'     => 'page',
-    );
-     
-    // Registering your Custom Post Type
-    register_post_type( 'orders', $args );
- 
-}
- 
-/* Hook into the 'init' action so that the function
-* Containing our post type registration is not 
-* unnecessarily executed. 
-*/
- 
-add_action( 'init', 'custom_post_type', 0 );

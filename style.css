@@ -86,7 +86,8 @@ h4,
 h5,
 h6,
 .menu li,
-.site-title {
+.site-title,
+.op-btn-menu {
   font-family: Oswald, sans-serif
 }
 .only-sp,
@@ -127,7 +128,8 @@ body {
   margin: 0 -10px;
   overflow: hidden;
 }
-.op-list .post {
+.op-list .post,
+.op-list .orders {
   width: 25%;
   float: left;
   padding: 0 10px;
@@ -660,36 +662,220 @@ body {
   margin-bottom: 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media all and (max-width:767px) {
-  .only-pc {
-      display: none
+@media all and (min-width: 1201px) {
+  body {
+    background-size: 100% 100%;
   }
-  .btn-menu,
+}
+
+@media all and (max-width: 767px) {
+  .only-pc {
+    display: none
+  }
   .only-sp {
-      display: block
+    display: block
+  }
+  body {
+    background-position: 30% top;
+  }
+  .top-navigation,
+  .product-navigation {
+    display: none;
+  }
+  .op-btn-menu {
+    background: rgba(0,0,0,.5);
+    padding: 10px 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+  }
+  .op-btn-menu span {
+    display: block;
+    padding-right: 20px;
+    background: url(/img/ico_arrow01.png) no-repeat right center;
+    -webkit-transition: background-image .8s ease-in-out;
+    transition: background-image .8s ease-in-out;
+  }
+  .op-btn-menu.active span {
+    background-image: url(/img/ico_arrow02.png);
+    -webkit-transition: background-image .8s ease-in-out;
+    transition: background-image .8s ease-in-out;
+  }
+  .op-list {
+    margin: 0 -15px;
+  }
+  .op-list .post,
+  .op-list .orders {
+    width: 50%;
+    padding: 0 15px;
+  }
+  .single .site-main > .post .post-thumbnail {
+    float: none;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  .op-cart-table-wrap {
+    overflow-x: scroll;
+  }
+  .op-cart-table {
+    width: 200%;
+  }
+  .op-cart-table td, .op-cart-table th {
+    line-height: 24px;
+  }
+  .op-form-info {
+    margin: 0;
+  }
+  .op-form-info-col {
+    float: none;
+    width: auto;
+    padding: 0;
+    margin: 0 0 15px;
+  }
+  .op-form-info textarea {
+    line-height: normal;
+    min-height: 60px;
+    padding: 10px;
+  }
+  .op-form-info label a {
+    display: block;
+    margin-top: 10px;
+  }
+  .op-form-info label span {
+    vertical-align: top;
+  }
+  .op-order-loading > div {
+    padding: 10px;
+  }
+  .single .site-main > .post .entry-title, .single .site-main > .orders .entry-title {
+    font-size: 28px;
+    padding: 5px 0 10px;
+  }
+  .op-chat-fb {
+    line-height: 24px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .site-title {
+    font-size: 28px;
+    line-height: 42px;
+  }
+  .site-description {
+    font-size: 15px;
+  }
+  .site-branding {
+    padding-bottom: 20px;
+  }
+  .site {
+    padding: 0 15px;
+  }
+  .op-btn-menu {
+    padding: 6px 15px;
+    font-size: 16px;
+  }
+  .op-btn-menu span {
+    background-size: 24px;
+  }
+  .menu {
+    margin: 0 -5px 10px;
+  }
+  .menu li {
+    margin: 5px;
+  }
+  .menu li a {
+    font-size: 14px;
+    line-height: 36px;
+    padding: 0 10px;
+    letter-spacing: 1px;
+  }
+  .op-list {
+    margin: 0 -10px;
+  }
+  .op-list .post,
+  .op-list .orders {
+    padding: 0 10px;
+  }
+  .post .entry-title {
+    font-size: 16px;
+    padding: 5px 0;
+  }
+  .post .op-price-content {
+    font-size: 15px;
+    letter-spacing: .4px;
+  }
+  .post .op-price-content.promotion .op-price {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+  .site-footer {
+    font-size: 13px;
+    padding: 10px 0;
+    line-height: 20px;
+  }
+  .site-footer a {
+    display: block;
+  }
+  .op-cart a {
+    line-height: 50px;
+    width: 50px;
+    background-size: 22px;
+  }
+  .op-cart span {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+  }
+  .single .site-main > .post .entry-title,
+  .single .site-main > .orders .entry-title {
+    font-size: 26px;
+    line-height: normal;
+    padding-bottom: 15px;
+  }
+  .op-select-input-wrap {
+    display: block;
+  }
+  .op-select input {
+    width: 100%;
+    padding: 0 42px 0 10px;
+  }
+  .op-select-input-wrap i {
+    top: 0;
+  }
+  .single .site-main > .post .entry-content {
+    font-size: 16px;
+  }
+  .post .entry-content h3, .orders .entry-content h3, .page .entry-content h3, .search .entry-content h3, .error404 .entry-content h3 {
+    margin-top: 20px;
+  }
+  .single .entry-content p, .page .entry-content p, .search .entry-content p, .error404 .entry-content p {
+    line-height: 24px;
+    font-size: 16px;
+  }
+  .page-title, .page .entry-title {
+    font-size: 26px;
+  }
+  .op-cart-table {
+    width: 300%;
+  }
+  .op-cart-btn a {
+    margin: 10px 0;
+    width: 100%;
+    max-width: 80%;
+  }
+  .single .site-main > .post, .single .site-main > .orders, .page .entry-content, .search .entry-content, .error404 .entry-content {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .op-cart-table td, .op-cart-table th {
+    font-size: 16px;
+  }
+  .search-form > label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .single .site-main > .post .entry-title, .single .site-main > .orders .entry-title {
+    font-size: 26px;
+    padding-bottom: 5px;
   }
 }

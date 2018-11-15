@@ -4,17 +4,17 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <?php if(is_front_page() && is_home()): ?>
-<meta name="description" content="<?php bloginfo( 'name' ); ?> Có Ốp lưng dẻo, Ốp lưng cường lực, Áo phong, Áo thun, ... nhiều thứ lắm đó.">
+<meta name="description" content="<?php bloginfo( 'name' ); ?> Có bán Ốp lưng dẻo, Ốp lưng cường lực, Áo phong, Áo thun, ... nhiều thứ lắm đó.">
+<meta name="keywords" content="lvgames shop,op lung,op cuong luc,op dien thoai,ao thun,ao phong,qua luu niem">
 <?php endif; ?>
-<?php if(is_single()): ?>
-<meta name="description" content="<?php echo esc_html(get_the_excerpt()); ?>">
+<?php if(is_single()):
+$post_category = get_the_category( get_the_ID() );
+if($post_category[0]->slug == 'op-lung'):
+$desc_op_lung = 'Hãy đặt ngay '.esc_html(wp_title('&#8211;',false,'right')).'một chiếc ốp lưng với chất liệu nhựa dẻo, lưng in hình ấn tướng, sẽ mang lại cho bạn cảm giác thoải mái khi cầm.';
+?>
+<meta name="description" content="<?php bloginfo( 'name' ); ?> Chuyên Ốp lưng dẻo, Ốp cường lực, Ốp 3D 2D,.. Hình ảnh chủ yếu cảm hứng từ các game Liên quân, Liên minh, Dota2, Fifa,...">
+<meta name="keywords" content="lvgames shop,op lung,op cuong luc,op dien thoai,op lung lien quan,op lung lien minh,op lung game">
 <?php endif; ?>
-<?php if(is_single()): ?>
-<meta name="keywords" content="<?php $metaKey = esc_html(get_post_meta(get_the_ID(), 'meta_keywords', true)); if($metaKey) echo $metaKey.','; ?>op lung,op cuong luc,op lung deo,op lung dien thoai,op lung tablet,ao thun,ao phong,phu kien du thu">
-<?php else: ?>
-<meta name="keywords" content="op lung,op cuong luc,op lung deo,op lung dien thoai,op lung tablet,ao thun,ao phong,phu kien du thu">
-<?php endif; ?>
-<?php if(is_single()): ?>
 <meta name="robots" content="index, follow">
 <!-- OGP Tag -->
 <meta property="og:title" content="<?php echo esc_html(wp_title('&#8211;',false,'right')); bloginfo( 'name' ); ?>">
@@ -22,14 +22,14 @@
 <meta property="og:url" content="<?php echo wp_get_canonical_url(); ?>">
 <meta property="og:image" content="<?php the_post_thumbnail_url(); ?>">
 <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
-<meta property="og:description" content="<?php echo esc_html(get_the_excerpt()); ?>">
+<meta property="og:description" content="<?php echo $desc_op_lung; ?>">
 <meta property="og:locale" content="vi_VN">
 <!-- /OGP Tag -->
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@LVGamesDotNet">
 <meta name="twitter:title" content="<?php echo esc_html(wp_title('&#8211;',false,'right')); bloginfo( 'name' ); ?>">
-<meta name="twitter:description" content="<?php echo esc_html(get_the_excerpt()); ?>">
+<meta name="twitter:description" content="<?php echo $desc_op_lung; ?>">
 <meta name="twitter:image" content="<?php the_post_thumbnail_url(); ?>">
 <!-- /Twitter Card -->
 <?php endif; ?>
@@ -65,10 +65,10 @@
 					<p class="site-description"><?php echo $description; ?></p>
 				<?php endif;
 			?>
-			<span class="btn-menu only-sp">Menu</span>
 		</div><!-- .site-branding -->
 		<div class="op-cart"><a href="<?php echo esc_url( home_url( '/gio-hang' ) ); ?>" title="Xem giỏ hàng cái nào!">Giỏ hàng <span class="op-cart-count">0</span></a></div>
 		<?php if ( has_nav_menu( 'top' ) ) : ?>
+		<div class="op-btn-menu only-sp"><span>Sản phẩm</span></div>
 		<nav id="top-navigation" class="top-navigation" role="navigation">
 			<?php
 				// Top links navigation menu.

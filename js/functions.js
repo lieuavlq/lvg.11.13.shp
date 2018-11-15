@@ -1,6 +1,18 @@
 jQuery(function($){
   $('.op-list .post').matchHeight();
 
+  // MENU SP
+  $('.op-btn-menu').click(function(){
+    if($(this).hasClass('active')){
+      $(this).removeClass('active');
+      $('.top-navigation, .product-navigation').stop().slideUp(300);
+    }else{
+      $(this).addClass('active');
+      $('.top-navigation, .product-navigation').stop().slideDown(400);
+    }
+    
+  });
+
   // COMMOM VAR
   var storage = window.localStorage;
   var op_index_url = 'http://wpshop.localhost';
@@ -107,8 +119,8 @@ jQuery(function($){
         op_cart.append('<h3 class="op-cart-progress-page-h3">Chi Tiết Đơn Hàng</h3>');
       }
     }
-    op_cart.append('<table class="op-cart-table"></table>');
-    op_cart.children('table').append('<tr><th>STT</th><th style="width: 10%">Hình ảnh</th><th style="width: 22%">Tên sản phẩm</th><th style="width: 10%">Mã Sản phẩm</th><th>Loại (x cái)</th><th>Đơn giá</th><th>Thành tiền</th><th>&nbsp;</th></tr>');
+    op_cart.append('<div class="op-cart-table-wrap"><p>*Kéo trái phải để xem hết bảng.</p><table class="op-cart-table"></table></div>');
+    op_cart.find('table').append('<tr><th>STT</th><th style="width: 10%">Hình ảnh</th><th style="width: 22%">Tên sản phẩm</th><th style="width: 10%">Mã Sản phẩm</th><th>Loại (x cái)</th><th>Đơn giá</th><th>Thành tiền</th><th>&nbsp;</th></tr>');
     var get_all_store = storage.getItem('opbillnum');
     var run = 1;
     var total_price = 0, item_price_x_quantity = 0;
@@ -126,11 +138,11 @@ jQuery(function($){
           op_devices_uvg = storage.getItem('billcurrent_devices' + i) + '<br>(Chọn Ốp cường lực)';
         }
 
-        op_cart.children('table').append('<tr><td>'+ run +'</td><td><img src="' + storage.getItem('billcurrent_img' + i) + '" alt=""></td><td><a href="' + storage.getItem('billcurrent_url' + i) + '" title="Coi lại chi tiết sản phẩm này">' + storage.getItem('billcurrent_title' + i) + '</a></td><td>' + storage.getItem('billcurrent_sku' + i) + '</td><td>' + op_devices_uvg + ' x ' + storage.getItem('billcurrent_quatity' + i) + '</td><td>' + change_price(storage.getItem('billcurrent_price' + i)) + '</td><td>' + change_price(item_price_x_quantity) + '</td><td><span class="op-cart-remove-item" data-num="'+ i +'">x</span></td></tr>');
+        op_cart.find('table').append('<tr><td>'+ run +'</td><td><img src="' + storage.getItem('billcurrent_img' + i) + '" alt=""></td><td><a href="' + storage.getItem('billcurrent_url' + i) + '" title="Coi lại chi tiết sản phẩm này">' + storage.getItem('billcurrent_title' + i) + '</a></td><td>' + storage.getItem('billcurrent_sku' + i) + '</td><td>' + op_devices_uvg + ' x ' + storage.getItem('billcurrent_quatity' + i) + '</td><td>' + change_price(storage.getItem('billcurrent_price' + i)) + '</td><td>' + change_price(item_price_x_quantity) + '</td><td><span class="op-cart-remove-item" data-num="'+ i +'">x</span></td></tr>');
         run++;
       }
     }
-    op_cart.children('table').append('<tr><td colspan="5">Tổng tiền giỏ hàng</td><td colspan="2">' + change_price(total_price.toLocaleString()) + '</td><td></td></tr>');
+    op_cart.find('table').append('<tr><td colspan="5">Tổng tiền giỏ hàng</td><td colspan="2">' + change_price(total_price.toLocaleString()) + '</td><td></td></tr>');
     op_cart_btn.append('<a href="/tien-hanh-dat-hang">Tiến hành đặt hàng</a><a href="/">Coi thêm sản phẩm</a>');
   }else{
     op_cart.append('<p>Hiện trong Giỏ chưa có gì cả tiến hành tìm sản phẩm ưng ý nào!!</p>');
